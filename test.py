@@ -1,7 +1,7 @@
 from tm import *
 
 
-q_even = State('q1')
+q_even = State('q0')
 q_odd = State('q1')
 
 q_even.set_transition_functions(
