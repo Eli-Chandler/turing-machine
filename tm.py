@@ -132,16 +132,14 @@ class TuringMachine:
             self._print_trace(not first)
             first = False
 
+            if self.state is AcceptState:
+                return True
+            if self.state is RejectState:
+                return False
+
             transition_function = self.state.get_transition_function(self._read())
             self._process_transition_function(transition_function)
             self.state = transition_function.new_state
-            if self.state is AcceptState:
-                self._print_trace(first)
-                return True
-            elif self.state is RejectState:
-                self._print_trace(first)
-                return False
-
 
     def reset(self):
         self.tape = [Blank]
